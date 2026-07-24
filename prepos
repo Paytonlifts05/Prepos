@@ -1,0 +1,431 @@
+*{box-sizing:border-box} :root{--bg:#090b0e;--card:#12161b;--card2:#171c22;--text:#f5f7fa;--muted:#9aa4af;--accent:#ef4444;--line:#26303a;--good:#22c55e}
+html{background:var(--bg)} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#090b0e,#0d1116 45%,#090b0e);color:var(--text);min-height:100vh}
+button,input,select,textarea{font:inherit}.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px max(18px,calc((100vw - 1080px)/2));background:rgba(9,11,14,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)}
+h1,h2,h3,p{margin-top:0}h1{font-size:1.15rem;margin-bottom:0}.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.18em;font-size:.72rem;margin-bottom:4px}.muted{color:var(--muted)}
+main{max-width:1080px;margin:auto;padding:20px}.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 12px 40px rgba(0,0,0,.24)}.hero{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px}.hero p:last-child{grid-column:1/-1;margin-bottom:0}.score-ring{width:94px;height:94px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) 0%,#232a33 0);position:relative}.score-ring:after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--card)}.score-ring span{position:relative;z-index:1;font-weight:800;font-size:1.15rem}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}.tab{border:1px solid var(--line);background:#11151a;color:var(--muted);padding:12px;border-radius:14px}.tab.active{background:var(--text);color:#0b0d10;font-weight:800}.tab-panel{display:none}.tab-panel.active{display:block}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.pill{font-size:.78rem;background:#20262e;border:1px solid #303a45;color:#d5dbe2;padding:6px 9px;border-radius:999px}
+label{display:block;color:#cbd3dc;font-size:.9rem;margin:12px 0}input,select,textarea{width:100%;margin-top:7px;background:#0d1116;border:1px solid #2d3742;color:var(--text);padding:12px;border-radius:12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+button,.file-button{border:1px solid #323d48;background:#1a2027;color:var(--text);padding:11px 14px;border-radius:12px;cursor:pointer;text-align:center}.primary{background:var(--accent);border-color:var(--accent);font-weight:800}.ghost{background:transparent}.hidden{display:none!important}
+.check-row{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.06)}.check-row:last-child{border-bottom:0}.check-row input{width:auto;margin-top:3px}.check-row strong{display:block}.check-row small{display:block;color:var(--muted);margin-top:3px;line-height:1.35}.done strong{text-decoration:line-through;color:var(--muted)}
+.water-controls{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.progress-track{height:12px;background:#242c34;border-radius:999px;overflow:hidden;margin:18px 0 8px}.progress-track div{height:100%;width:0;background:var(--accent);transition:.25s}
+.exercise{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.07)}.exercise-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:8px}.exercise-grid input{margin:0}.exercise-title{font-weight:800;margin-bottom:8px}.history-item{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;gap:12px}.history-item small{color:var(--muted)}.button-stack{display:grid;gap:10px}.meal-edit{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end;margin-bottom:8px}.meal-edit button{height:44px}
+canvas{width:100%;height:auto;background:#0d1116;border-radius:14px;border:1px solid #232c35}footer{max-width:1080px;margin:16px auto 90px;padding:0 20px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;font-size:.84rem}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.hero{grid-template-columns:1fr auto}.tabs{position:sticky;top:78px;z-index:9;background:var(--bg);padding:8px 0}.tab{padding:10px 5px;font-size:.8rem}.water-controls{grid-template-columns:repeat(2,1fr)}.exercise-grid{grid-template-columns:1fr 1fr}.exercise-grid input:first-child{grid-column:1/-1}footer{flex-direction:column}.topbar{padding-left:18px;padding-right:18px}}
+
+# Payton PrepOS
+
+A mobile-first bodybuilding prep tracker that works offline and saves data on the device.
+
+## Run on a laptop
+1. Unzip the folder.
+2. Open the folder in VS Code.
+3. Install the "Live Server" extension.
+4. Right-click `index.html` and choose **Open with Live Server**.
+
+You can also open `index.html` directly, although the install/offline features work best from a web server.
+
+## Put it on GitHub Pages
+1. Create a new GitHub repository.
+2. Upload every file from this folder.
+3. Open **Settings → Pages**.
+4. Under **Build and deployment**, select **Deploy from a branch**.
+5. Select the `main` branch and `/root`.
+6. Open the website link GitHub provides.
+
+## Install on iPhone
+1. Open the GitHub Pages link in Safari.
+2. Tap the Share button.
+3. Tap **Add to Home Screen**.
+4. Name it PrepOS and tap Add.
+
+## Main features
+- Daily prep score
+- Editable meal plan and meal checkoffs
+- Morning weight, sleep and steps logging
+- Water tracking
+- Workout logging
+- Training, cardio, posing and supplement checklist
+- Weight trend chart
+- Local backup export and import
+- Offline support
+
+Your data is stored only in the browser on that device. Export a backup regularly.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d10" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="PrepOS" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Payton PrepOS</title>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">PAYTON PREPOS</p>
+      <h1>Competition Dashboard</h1>
+    </div>
+    <button id="installBtn" class="ghost hidden">Install</button>
+  </header>
+
+  <main>
+    <section class="hero card">
+      <div>
+        <p class="muted" id="todayLabel"></p>
+        <h2>Daily Prep Score</h2>
+      </div>
+      <div class="score-ring" id="scoreRing">
+        <span id="scoreValue">0%</span>
+      </div>
+      <p class="muted">Complete your meals, training, cardio, water, sleep, posing, and check-in.</p>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="today">Today</button>
+      <button class="tab" data-tab="workout">Workout</button>
+      <button class="tab" data-tab="progress">Progress</button>
+      <button class="tab" data-tab="settings">Plan</button>
+    </nav>
+
+    <section id="today" class="tab-panel active">
+      <div class="grid">
+        <article class="card">
+          <div class="card-head">
+            <h3>Morning Check-In</h3>
+            <span class="pill">Daily</span>
+          </div>
+          <label>Body weight (lb)
+            <input type="number" step="0.1" id="weightInput" placeholder="212.6" />
+          </label>
+          <label>Sleep (hours)
+            <input type="number" step="0.1" id="sleepInput" placeholder="8" />
+          </label>
+          <label>Steps
+            <input type="number" id="stepsInput" placeholder="10000" />
+          </label>
+          <button class="primary" id="saveCheckin">Save Check-In</button>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h3>Meals</h3>
+            <span class="pill" id="mealCount">0/5</span>
+          </div>
+          <div id="mealList"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h3>Prep Tasks</h3>
+            <span class="pill">Checklist</span>
+          </div>
+          <div id="taskList"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h3>Water</h3>
+            <span class="pill" id="waterTotal">0 oz</span>
+          </div>
+          <div class="water-controls">
+            <button data-water="16">+16 oz</button>
+            <button data-water="24">+24 oz</button>
+            <button data-water="32">+32 oz</button>
+            <button class="ghost" id="resetWater">Reset</button>
+          </div>
+          <div class="progress-track"><div id="waterBar"></div></div>
+          <p class="muted">Daily goal: <span id="waterGoalLabel">128</span> oz</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="workout" class="tab-panel">
+      <article class="card">
+        <div class="card-head">
+          <h3>Workout Log</h3>
+          <select id="workoutDay"></select>
+        </div>
+        <div id="exerciseList"></div>
+        <button class="primary" id="saveWorkout">Save Workout</button>
+      </article>
+    </section>
+
+    <section id="progress" class="tab-panel">
+      <div class="grid">
+        <article class="card">
+          <div class="card-head">
+            <h3>Weight Trend</h3>
+            <button class="ghost" id="clearWeight">Clear</button>
+          </div>
+          <canvas id="weightChart" width="640" height="280"></canvas>
+        </article>
+
+        <article class="card">
+          <h3>Recent Check-Ins</h3>
+          <div id="historyList"></div>
+        </article>
+
+        <article class="card">
+          <h3>Data</h3>
+          <div class="button-stack">
+            <button id="exportData">Export Backup</button>
+            <label class="file-button">Import Backup
+              <input type="file" id="importData" accept=".json" hidden />
+            </label>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="settings" class="tab-panel">
+      <div class="grid">
+        <article class="card">
+          <h3>Daily Targets</h3>
+          <label>Water goal (oz)
+            <input type="number" id="waterGoalInput" />
+          </label>
+          <label>Step goal
+            <input type="number" id="stepGoalInput" />
+          </label>
+          <label>Show date
+            <input type="date" id="showDateInput" />
+          </label>
+          <button class="primary" id="saveTargets">Save Targets</button>
+        </article>
+
+        <article class="card">
+          <h3>Edit Meal Plan</h3>
+          <div id="mealEditor"></div>
+          <button id="addMeal">Add Meal</button>
+          <button class="primary" id="saveMeals">Save Meals</button>
+        </article>
+
+        <article class="card">
+          <h3>App Notes</h3>
+          <textarea id="notesInput" rows="8" placeholder="Coach updates, posing cues, substitutions, reminders..."></textarea>
+          <button class="primary" id="saveNotes">Save Notes</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span id="countdown"></span>
+    <span>Data stays on this device.</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+const DEFAULT = {
+  targets:{water:128,steps:10000,showDate:"2026-11-14"},
+  meals:[
+    {name:"Meal 1",details:"Enter your coach meal"},
+    {name:"Meal 2",details:"Enter your coach meal"},
+    {name:"Meal 3",details:"Enter your coach meal"},
+    {name:"Meal 4",details:"Enter your coach meal"},
+    {name:"Meal 5",details:"Enter your coach meal"}
+  ],
+  workoutDays:{
+    "Push":[["Incline Press","3","8-12"],["Machine Chest Press","3","8-12"],["Lateral Raise","4","12-20"],["Triceps Pressdown","3","10-15"]],
+    "Pull":[["Lat Pulldown","3","8-12"],["Chest-Supported Row","3","8-12"],["Rear Delt Fly","4","12-20"],["Cable Curl","3","10-15"]],
+    "Legs":[["Hack Squat","4","6-10"],["Romanian Deadlift","3","8-12"],["Leg Press","3","10-15"],["Leg Curl","3","10-15"],["Calf Raise","4","10-15"]],
+    "Rest / Cardio":[["Cardio","1","Coach target"],["Posing","1","15-30 min"]]
+  },
+  notes:"",
+  logs:{}
+};
+
+const clone = x => JSON.parse(JSON.stringify(x));
+let state = JSON.parse(localStorage.getItem("preposState") || "null") || clone(DEFAULT);
+state.targets = {...DEFAULT.targets,...(state.targets||{})};
+state.meals = state.meals?.length ? state.meals : clone(DEFAULT.meals);
+state.workoutDays = state.workoutDays || clone(DEFAULT.workoutDays);
+state.logs = state.logs || {};
+
+const todayKey = () => new Date().toISOString().slice(0,10);
+const today = () => {
+  const k=todayKey();
+  state.logs[k] ||= {meals:{},tasks:{},water:0,workout:{},weight:"",sleep:"",steps:""};
+  return state.logs[k];
+};
+const save = () => {localStorage.setItem("preposState",JSON.stringify(state)); renderAll();};
+
+document.getElementById("todayLabel").textContent = new Date().toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric"});
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tab,.tab-panel").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active"); document.getElementById(b.dataset.tab).classList.add("active");
+  if(b.dataset.tab==="progress") drawChart();
+});
+
+const tasks=[
+  ["training","Training completed"],
+  ["cardio","Cardio completed"],
+  ["posing","Posing practice"],
+  ["supplements","Supplements taken"],
+  ["checkin","Morning check-in saved"]
+];
+
+function renderMeals(){
+  const log=today(), host=document.getElementById("mealList"); host.innerHTML="";
+  let done=0;
+  state.meals.forEach((m,i)=>{
+    if(log.meals[i]) done++;
+    const row=document.createElement("label"); row.className="check-row "+(log.meals[i]?"done":"");
+    row.innerHTML=`<input type="checkbox" ${log.meals[i]?"checked":""}><span><strong>${escapeHtml(m.name)}</strong><small>${escapeHtml(m.details)}</small></span>`;
+    row.querySelector("input").onchange=e=>{log.meals[i]=e.target.checked;save()};
+    host.appendChild(row);
+  });
+  document.getElementById("mealCount").textContent=`${done}/${state.meals.length}`;
+}
+function renderTasks(){
+  const log=today(), host=document.getElementById("taskList");host.innerHTML="";
+  tasks.forEach(([key,label])=>{
+    const row=document.createElement("label");row.className="check-row "+(log.tasks[key]?"done":"");
+    row.innerHTML=`<input type="checkbox" ${log.tasks[key]?"checked":""}><span><strong>${label}</strong></span>`;
+    row.querySelector("input").onchange=e=>{log.tasks[key]=e.target.checked;save()};
+    host.appendChild(row);
+  });
+}
+function renderTodayInputs(){
+  const log=today();
+  weightInput.value=log.weight||"";sleepInput.value=log.sleep||"";stepsInput.value=log.steps||"";
+  waterTotal.textContent=`${log.water||0} oz`; waterGoalLabel.textContent=state.targets.water;
+  waterBar.style.width=`${Math.min(100,(log.water||0)/state.targets.water*100)}%`;
+}
+document.getElementById("saveCheckin").onclick=()=>{
+  const log=today(); log.weight=weightInput.value;log.sleep=sleepInput.value;log.steps=stepsInput.value;log.tasks.checkin=true;save();
+};
+document.querySelectorAll("[data-water]").forEach(b=>b.onclick=()=>{today().water=(today().water||0)+Number(b.dataset.water);save()});
+resetWater.onclick=()=>{today().water=0;save()};
+
+function calcScore(){
+  const l=today(); const mealTotal=state.meals.length||1;
+  const mealScore=Object.values(l.meals).filter(Boolean).length/mealTotal;
+  const taskScore=tasks.filter(([k])=>l.tasks[k]).length/tasks.length;
+  const waterScore=Math.min(1,(l.water||0)/state.targets.water);
+  const stepsScore=Math.min(1,(Number(l.steps)||0)/state.targets.steps);
+  const sleepScore=Math.min(1,(Number(l.sleep)||0)/8);
+  const score=Math.round((mealScore*.35+taskScore*.35+waterScore*.1+stepsScore*.1+sleepScore*.1)*100);
+  scoreValue.textContent=score+"%";scoreRing.style.background=`conic-gradient(var(--accent) ${score}%,#232a33 0)`;
+}
+
+function setupWorkout(){
+  workoutDay.innerHTML=Object.keys(state.workoutDays).map(k=>`<option>${k}</option>`).join("");
+  workoutDay.onchange=renderWorkout;
+  renderWorkout();
+}
+function renderWorkout(){
+  const day=workoutDay.value||Object.keys(state.workoutDays)[0], host=exerciseList;host.innerHTML="";
+  const saved=today().workout[day]||[];
+  state.workoutDays[day].forEach((ex,i)=>{
+    const x=saved[i]||{};
+    const div=document.createElement("div");div.className="exercise";
+    div.innerHTML=`<div class="exercise-title">${escapeHtml(ex[0])} · ${ex[1]} sets · ${ex[2]}</div>
+      <div class="exercise-grid">
+      <input placeholder="Weight" value="${x.weight||""}">
+      <input placeholder="Set 1 reps" value="${x.r1||""}">
+      <input placeholder="Set 2 reps" value="${x.r2||""}">
+      <input placeholder="Set 3 reps" value="${x.r3||""}">
+      </div>`;
+    host.appendChild(div);
+  });
+}
+saveWorkout.onclick=()=>{
+  const day=workoutDay.value;
+  today().workout[day]=[...document.querySelectorAll(".exercise")].map(div=>{
+    const a=div.querySelectorAll("input"); return {weight:a[0].value,r1:a[1].value,r2:a[2].value,r3:a[3].value};
+  });
+  today().tasks.training=true; save();
+};
+
+function renderHistory(){
+  const host=historyList;host.innerHTML="";
+  Object.entries(state.logs).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,14).forEach(([date,l])=>{
+    const div=document.createElement("div");div.className="history-item";
+    div.innerHTML=`<span><strong>${date}</strong><br><small>${l.sleep||"-"} hr sleep · ${l.steps||"-"} steps</small></span><strong>${l.weight||"-"} lb</strong>`;
+    host.appendChild(div);
+  });
+}
+function drawChart(){
+  const c=weightChart,ctx=c.getContext("2d"),dpr=window.devicePixelRatio||1;
+  const cssW=c.clientWidth||640,cssH=280;c.width=cssW*dpr;c.height=cssH*dpr;ctx.scale(dpr,dpr);
+  ctx.clearRect(0,0,cssW,cssH);
+  const data=Object.entries(state.logs).filter(([,l])=>Number(l.weight)).sort((a,b)=>a[0].localeCompare(b[0])).slice(-30);
+  ctx.strokeStyle="#28323d";ctx.lineWidth=1;
+  for(let i=0;i<5;i++){let y=30+i*50;ctx.beginPath();ctx.moveTo(36,y);ctx.lineTo(cssW-12,y);ctx.stroke()}
+  if(data.length<2){ctx.fillStyle="#9aa4af";ctx.font="14px sans-serif";ctx.fillText("Log at least two weigh-ins to see your trend.",36,145);return}
+  const vals=data.map(x=>Number(x[1].weight)),min=Math.min(...vals)-1,max=Math.max(...vals)+1;
+  const pts=vals.map((v,i)=>[36+i*(cssW-56)/(vals.length-1),240-(v-min)/(max-min)*190]);
+  ctx.strokeStyle="#ef4444";ctx.lineWidth=3;ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.stroke();
+  ctx.fillStyle="#f5f7fa";pts.forEach(p=>{ctx.beginPath();ctx.arc(...p,3,0,Math.PI*2);ctx.fill()});
+}
+clearWeight.onclick=()=>{if(confirm("Clear all saved weights?")){Object.values(state.logs).forEach(x=>x.weight="");save()}};
+
+function renderSettings(){
+  waterGoalInput.value=state.targets.water;stepGoalInput.value=state.targets.steps;showDateInput.value=state.targets.showDate;notesInput.value=state.notes||"";
+  mealEditor.innerHTML="";
+  state.meals.forEach((m,i)=>{
+    const div=document.createElement("div");div.className="meal-edit";
+    div.innerHTML=`<div><input data-name value="${escapeAttr(m.name)}"><input data-detail value="${escapeAttr(m.details)}"></div><button data-remove="${i}">×</button>`;
+    mealEditor.appendChild(div);
+  });
+  mealEditor.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{state.meals.splice(Number(b.dataset.remove),1);renderSettings()});
+}
+saveTargets.onclick=()=>{state.targets={water:Number(waterGoalInput.value)||128,steps:Number(stepGoalInput.value)||10000,showDate:showDateInput.value};save()};
+addMeal.onclick=()=>{state.meals.push({name:`Meal ${state.meals.length+1}`,details:""});renderSettings()};
+saveMeals.onclick=()=>{state.meals=[...mealEditor.querySelectorAll(".meal-edit")].map(x=>({name:x.querySelector("[data-name]").value,details:x.querySelector("[data-detail]").value}));save()};
+saveNotes.onclick=()=>{state.notes=notesInput.value;save()};
+
+function renderCountdown(){
+  const diff=Math.ceil((new Date(state.targets.showDate+"T12:00:00")-new Date())/86400000);
+  countdown.textContent=diff>=0?`${diff} days until show day`:`Show date passed ${Math.abs(diff)} days ago`;
+}
+exportData.onclick=()=>{
+  const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`prepos-backup-${todayKey()}.json`;a.click();URL.revokeObjectURL(a.href);
+};
+importData.onchange=e=>{
+  const file=e.target.files[0];if(!file)return;const r=new FileReader();
+  r.onload=()=>{try{state=JSON.parse(r.result);save();setupWorkout()}catch{alert("That backup file could not be read.")}};r.readAsText(file);
+};
+function escapeHtml(s=""){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function escapeAttr(s=""){return escapeHtml(s)}
+function renderAll(){renderMeals();renderTasks();renderTodayInputs();calcScore();renderHistory();renderSettings();renderCountdown();if(document.getElementById("progress").classList.contains("active"))drawChart()}
+let deferredPrompt;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;installBtn.classList.remove("hidden")});
+installBtn.onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null;installBtn.classList.add("hidden")}};
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
+setupWorkout();renderAll();
+
+const CACHE="prepos-v1";const ASSETS=["./","index.html","style.css","app.js","manifest.json","icon-192.svg","icon-512.svg"];
+self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
+self.addEventListener("fetch",e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="110" fill="#0b0d10"/><path d="M116 170h54v172h-54zm226 0h54v172h-54zM170 222h172v68H170zM76 206h40v100H76zm320 0h40v100h-40z" fill="#ef4444"/><text x="256" y="420" fill="#fff" font-size="58" text-anchor="middle" font-family="Arial" font-weight="700">PREPOS</text></svg>
+{
+  "name": "Payton PrepOS",
+  "short_name": "PrepOS",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090b0e",
+  "theme_color": "#090b0e",
+  "description": "Mobile bodybuilding prep tracker for meals, workouts, cardio, posing, water, sleep and progress.",
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
