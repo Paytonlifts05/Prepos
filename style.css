@@ -1,0 +1,593 @@
+/* ============================================================================
+   PREPOS - STYLESHEET
+   ============================================================================ */
+
+/* ============ DESIGN TOKENS ============ */
+:root {
+  --bg: #090b0e;
+  --card: #12161b;
+  --card2: #171c22;
+  --text: #f5f7fa;
+  --muted: #9aa4af;
+  --accent: #ef4444;
+  --line: #26303a;
+  --good: #22c55e;
+  --error: #dc2626;
+  --warning: #f59e0b;
+}
+
+/* ============ GLOBAL STYLES ============ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #090b0e, #0d1116 45%, #090b0e);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ============ TYPOGRAPHY ============ */
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 1.15rem;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ============ FORMS ============ */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+label {
+  display: block;
+  color: #cbd3dc;
+  font-size: 0.9rem;
+  margin: 12px 0;
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  margin-top: 7px;
+  background: #0d1116;
+  border: 1px solid #2d3742;
+  color: var(--text);
+  padding: 12px;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+input[type="number"]:invalid,
+input[type="date"]:invalid {
+  border-color: var(--error);
+}
+
+/* ============ BUTTONS ============ */
+button,
+.file-button {
+  border: 1px solid #323d48;
+  background: #1a2027;
+  color: var(--text);
+  padding: 11px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled),
+.file-button:hover {
+  background: #222a32;
+  border-color: #424d58;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.primary:hover:not(:disabled) {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--muted);
+}
+
+.ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #323d48;
+}
+
+.ghost.hidden {
+  display: none;
+}
+
+.file-button {
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* ============ LAYOUT ============ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px max(18px, calc((100vw - 1080px) / 2));
+  background: linear-gradient(180deg, var(--card), transparent);
+  border-bottom: 1px solid var(--line);
+}
+
+main {
+  max-width: 1080px;
+  margin: auto;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* ============ CARDS ============ */
+.card {
+  background: linear-gradient(180deg, var(--card2), var(--card));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-head h3 {
+  margin: 0;
+}
+
+.pill {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============ HERO SECTION ============ */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.score-ring {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ============ NAVIGATION TABS ============ */
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.tab {
+  border: 1px solid var(--line);
+  background: #11151a;
+  color: var(--muted);
+  padding: 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  border-color: var(--accent);
+}
+
+.tab.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* ============ TAB PANELS ============ */
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* ============ CHECKBOXES & ROWS ============ */
+.check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.15s ease;
+}
+
+.check-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.check-row:last-child {
+  border-bottom: 0;
+}
+
+.check-row input[type="checkbox"] {
+  width: auto;
+  margin-top: 3px;
+  cursor: pointer;
+  accent-color: var(--good);
+}
+
+.check-row.done span {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.check-row span {
+  flex: 1;
+}
+
+.check-row strong {
+  display: block;
+  font-weight: 600;
+}
+
+.check-row small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+/* ============ WATER TRACKING ============ */
+.water-controls {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.progress-track {
+  height: 12px;
+  background: #242c34;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 18px 0 8px;
+}
+
+.progress-track div {
+  height: 100%;
+  background: var(--good);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+/* ============ EXERCISE LOG ============ */
+.exercise {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.exercise:last-child {
+  border-bottom: none;
+}
+
+.exercise-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.exercise-grid input {
+  margin: 0;
+}
+
+.exercise-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+/* ============ CHART ============ */
+canvas {
+  width: 100%;
+  height: auto;
+  background: #0d1116;
+  border-radius: 14px;
+  border: 1px solid #232c35;
+}
+
+/* ============ HISTORY LIST ============ */
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-item strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.history-item small {
+  color: var(--muted);
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ============ MEAL EDITOR ============ */
+.meal-edit {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: flex-end;
+}
+
+.meal-edit > div {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.meal-edit input {
+  margin: 0;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.meal-edit button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  height: 40px;
+}
+
+/* ============ BUTTON STACK ============ */
+.button-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.button-stack button,
+.button-stack label {
+  margin: 0;
+  width: 100%;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  max-width: 1080px;
+  margin: 16px auto 90px;
+  padding: 0 20px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+/* ============ TOAST NOTIFICATIONS ============ */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  max-width: 90vw;
+  animation: slideUp 0.3s ease;
+}
+
+.toast.hidden {
+  display: none;
+}
+
+.toast.success {
+  border-color: var(--good);
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--good);
+}
+
+.toast.error {
+  border-color: var(--error);
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--error);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    grid-template-columns: 1fr auto;
+  }
+
+  .tabs {
+    position: sticky;
+    top: 78px;
+    z-index: 9;
+    background: var(--bg);
+    padding: 8px 0;
+    margin: 0 -20px 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .tab {
+    padding: 10px 5px;
+    font-size: 0.85rem;
+  }
+
+  .exercise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .water-controls {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .meal-edit > div {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .score-ring {
+    width: 120px;
+    height: 120px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .topbar {
+    padding: 12px max(12px, calc((100vw - 1080px) / 2));
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  .water-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
